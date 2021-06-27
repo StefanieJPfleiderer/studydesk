@@ -1,0 +1,35 @@
+.btn-content {
+  width: 150px; !important
+  margin: 5px;
+}
+
+.card {
+    display: inline-block;
+    margin: 10px;
+}
+
+.content-card {
+  width: 380px;
+  height: 160px;
+  margin: 10px;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+body {
+    margin: 20px;
+}
+
+p:not(body > p) {
+   display: block;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   word-wrap: break-word;
+   overflow: hidden;
+   max-height: 4.5em;
+   line-height: 1.5em;
+}
