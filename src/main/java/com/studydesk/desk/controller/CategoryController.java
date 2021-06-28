@@ -5,11 +5,13 @@ import com.studydesk.desk.persistence.CategoryRepository;
 import com.studydesk.desk.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 @RestController
@@ -34,4 +36,14 @@ public class CategoryController {
         modelMap.addAttribute("list", categories);
         return new ModelAndView("overview");
     }
+
+    @GetMapping("/showAddForm")
+    public ModelAndView showAddForm(ModelMap modelMap) {
+        modelMap.addAttribute("headline", "Add Category");
+        modelMap.addAttribute("addElement", "Category");
+        modelMap.addAttribute("title", "Add Category");
+        return new ModelAndView("add-form", "element", new Category());
+    }
+
+
 }
