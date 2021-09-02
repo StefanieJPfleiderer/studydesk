@@ -24,7 +24,7 @@
       <img class="card-img-top glyphicon glyphicon-plus" src="/images/plus.png">
         <div class="card-body">
             <h5 class="card-title">&nbsp;</h5>
-          <a href="showAddForm" class="btn btn-primary">Add ${addElement}</a>
+          <a href="showAddForm" class="btn btn-primary">Add new ${addElement}</a>
         </div>
       </div>
   </body>
