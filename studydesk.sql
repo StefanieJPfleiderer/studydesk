@@ -9,5 +9,5 @@ CREATE TABLE category (
     image LONGBLOB);
 
 # Username and password removed for security reasons
-GRANT ALL PRIVILEGES ON studydesk.* TO ''@'localhost'
-IDENTIFIED BY '' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON studydesk.* TO 'root'@'localhost'
+IDENTIFIED BY 'admin' WITH GRANT OPTION;
