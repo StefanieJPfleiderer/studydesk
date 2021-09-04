@@ -3,6 +3,7 @@ package com.studydesk.desk.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "category")
 @Getter
@@ -24,6 +25,9 @@ public class Category implements Comparable<Category> {
 
     @Transient
     private String base64String;
+
+    @OneToMany(mappedBy = "category")
+    private List<Topic> topics;
 
     @Override
     public int hashCode() {

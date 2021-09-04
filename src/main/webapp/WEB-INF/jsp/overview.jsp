@@ -16,7 +16,9 @@
         <img class="card-img-top" alt=" " src="${'data:image/jpg;base64,'.concat(element.base64String)}">
         <div class="card-body">
           <h5 class="card-title">${element.name}</h5>
-          <a href="overview" class="btn btn-primary">${linkText}</a>
+          <c:set var="topicLink" value="topics?id=${element.id}"/>
+          <c:set var="contentLink" value="content/${element.id}"/>
+          <a href="${isTopic ? contentLink : topicLink}" class="btn btn-primary">${linkText}</a>
         </div>
       </div>
     </c:forEach>
