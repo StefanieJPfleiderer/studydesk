@@ -8,7 +8,7 @@
   </head>
   <body>
     <h1 class="display-3">${headline}</h1>
-    <form:form method="post" enctype="multipart/form-data" modelAttribute="element" action="addCategory">
+    <form:form method="post" enctype="multipart/form-data" modelAttribute="element" action="${action}">
         <div class="form-group">
           <form:label path="name">Name</form:label>
           <form:input class="form-control col-xs-4" type="text" path="name"/>

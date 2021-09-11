@@ -25,8 +25,16 @@
     <div class="card" style="width: 18rem;">
       <img class="card-img-top glyphicon glyphicon-plus" src="/images/plus.png">
         <div class="card-body">
-            <h5 class="card-title">&nbsp;</h5>
-          <a href="showAddForm" class="btn btn-primary">Add new ${addElement}</a>
+          <h5 class="card-title">&nbsp;</h5>
+          <c:choose>
+            <c:when test="${not empty id}">
+              <c:set var="href" value="showTopicAddForm?id=${id}&isTopic=${isTopic}"/>
+            </c:when>
+            <c:otherwise>
+              <c:set var="href" value="showCategoryAddForm?isTopic=${isTopic}"/>
+            </c:otherwise>
+          </c:choose>
+          <a href="${href}" class="btn btn-primary">Add new ${addElement}</a>
         </div>
       </div>
   </body>

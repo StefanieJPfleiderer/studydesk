@@ -27,20 +27,20 @@ public class CategoryController {
         modelMap.addAttribute("linkText", "See Topics");
         modelMap.addAttribute("headline", "Categories");
         modelMap.addAttribute("addElement", "Category");
-        if (elementId != null && elementId > 0) {
-            modelMap.addAttribute("elementId", elementId);
-        }
+        modelMap.addAttribute("isTopic", "false");
+        modelMap.addAttribute("id", "");
         ArrayList<Category> categories = imageService
                 .getBase64String((ArrayList<Category>) categoryRepository.findAll());
         modelMap.addAttribute("list", categories);
         return new ModelAndView("overview");
     }
 
-    @GetMapping("/showAddForm")
+    @GetMapping("/showCategoryAddForm")
     public ModelAndView showAddForm(ModelMap modelMap) {
         modelMap.addAttribute("headline", "Add Category");
         modelMap.addAttribute("addElement", "Category");
         modelMap.addAttribute("title", "Add Category");
+        modelMap.addAttribute("action", "addCategory");
         return new ModelAndView("add-form", "element", new Category());
     }
 
