@@ -6,7 +6,6 @@ import com.studydesk.desk.persistence.CategoryRepository;
 import com.studydesk.desk.persistence.TopicRepository;
 import com.studydesk.desk.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -39,8 +38,7 @@ public class TopicController {
         modelMap.addAttribute("isTopic", "true");
         modelMap.addAttribute("id", id);
 
-        ArrayList<Topic> topicsWithImage = imageService
-                .getBase64String((ArrayList<Topic>) topicRepository.findAll());
+        ArrayList<Topic> topicsWithImage = imageService.getBase64String(topics);
         modelMap.addAttribute("list", topicsWithImage);
         return new ModelAndView("overview");
     }
