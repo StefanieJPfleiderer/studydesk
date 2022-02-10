@@ -28,6 +28,7 @@ public class CategoryController {
         modelMap.addAttribute("headline", "Categories");
         modelMap.addAttribute("addElement", "Category");
         modelMap.addAttribute("isTopic", "false");
+        modelMap.addAttribute("isContent", "false");
         modelMap.addAttribute("id", "");
         ArrayList<Category> categories = imageService
                 .getBase64String((ArrayList<Category>) categoryRepository.findAll());

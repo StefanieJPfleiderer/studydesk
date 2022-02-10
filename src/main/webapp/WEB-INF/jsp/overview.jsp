@@ -17,7 +17,7 @@
         <div class="card-body">
           <h5 class="card-title">${element.name}</h5>
           <c:set var="topicLink" value="topics?id=${element.id}"/>
-          <c:set var="contentLink" value="content/${element.id}"/>
+          <c:set var="contentLink" value="content?id=${element.id}"/>
           <a href="${isTopic ? contentLink : topicLink}" class="btn btn-primary">${linkText}</a>
         </div>
       </div>
@@ -34,6 +34,9 @@
               <c:set var="href" value="showCategoryAddForm?isTopic=${isTopic}"/>
             </c:otherwise>
           </c:choose>
+          <c:if test="${isContent}">
+            <c:set var="href" value="showPdfAddForm?id=${id}"/>
+          </c:if>
           <a href="${href}" class="btn btn-primary">Add new ${addElement}</a>
         </div>
       </div>

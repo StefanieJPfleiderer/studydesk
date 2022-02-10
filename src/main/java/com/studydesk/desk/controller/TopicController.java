@@ -36,6 +36,7 @@ public class TopicController {
         modelMap.addAttribute("addElement", "Topics");
         modelMap.addAttribute("linkText", "See Content");
         modelMap.addAttribute("isTopic", "true");
+        modelMap.addAttribute("isContent", "false");
         modelMap.addAttribute("id", id);
 
         ArrayList<Topic> topicsWithImage = imageService.getBase64String(topics);
