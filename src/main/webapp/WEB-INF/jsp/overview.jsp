@@ -18,7 +18,11 @@
           <h5 class="card-title">${element.name}</h5>
           <c:set var="topicLink" value="topics?id=${element.id}"/>
           <c:set var="contentLink" value="content?id=${element.id}"/>
+          <c:set var="topicDeleteLink" value="deleteTopic?id=${element.id}" />
+          <c:set var="categoryDeleteLink" value="deleteCategory?id=${element.id}" />
           <a href="${isTopic ? contentLink : topicLink}" class="btn btn-primary">${linkText}</a>
+          <a href="${isTopic ? topicDeleteLink : categoryDeleteLink }" class="btn btn-primary"
+            onclick="return confirm('Are you sure you want to delete \'${element.name}\' and all its content?')">Delete</a>
         </div>
       </div>
     </c:forEach>

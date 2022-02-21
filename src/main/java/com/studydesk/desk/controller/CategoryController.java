@@ -58,5 +58,12 @@ public class CategoryController {
         return new ModelAndView("redirect:/");
     }
 
+    @GetMapping("/deleteCategory")
+    public ModelAndView deleteCategory(@RequestParam("id") Integer id) {
+        final Category categoryToDelete = categoryRepository.getById(id);
+        categoryRepository.delete(categoryToDelete);
+
+        return new ModelAndView("redirect:/");
+    }
 
 }

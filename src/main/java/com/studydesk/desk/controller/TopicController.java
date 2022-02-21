@@ -67,4 +67,13 @@ public class TopicController {
 
         return new ModelAndView("redirect:/topics?id=" + categoryId);
     }
+
+    @GetMapping("/deleteTopic")
+    public ModelAndView deleteTopic(@RequestParam("id") Integer id) {
+        final Topic topicToDelete = topicRepository.getById(id);
+        final Integer categoryId = topicToDelete.getCategory().getId();
+        topicRepository.delete(topicToDelete);
+
+        return new ModelAndView("redirect:/topics?id=" + categoryId);
+    }
 }
