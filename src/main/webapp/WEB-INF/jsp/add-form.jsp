@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/global.css">
     <script src="/js/bootstrap.min.js" ></script>
+    <script src="/js/jQuery.js"></script>
+    <script src="/js/fileUpload.js"></script>
   </head>
   <body>
     <h1 class="display-3">${headline}</h1>
@@ -14,9 +16,10 @@
           <form:input class="form-control col-xs-4" type="text" path="name"/>
         </div>
         <div class="form-group custom-file">
-          <form:label class="custom-file-label" path="image">Image</form:label>
-          <form:input class="custom-file-input col-xs-4" type="file" name="image" path="image"/>
+          <form:label id="file-label" class="custom-file-label" path="image">Image</form:label>
+          <form:input id="file-upload" class="custom-file-input col-xs-4" type="file" name="image" path="image"/>
         </div>
+        <br />
         <div class="form-group">
           <input class="btn btn-primary" type="submit" value="Add ${addElement}"/>
         </div>

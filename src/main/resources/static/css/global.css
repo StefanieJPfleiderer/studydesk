@@ -36,3 +36,14 @@ p:not(body > p) {
    word-wrap: break-word;
    overflow: hidden;
 }
+
+.custom-file-input.selected:lang(en)::after {
+  content: "" !important;
+}
+.custom-file {
+  overflow: hidden;
+}
+
+.custom-file-input {
+  white-space: nowrap;
+}
