@@ -33,7 +33,7 @@ public class TopicController {
         ArrayList<Topic> topics = new ArrayList<>(category.getTopics());
 
         modelMap.addAttribute("headline", "Topics");
-        modelMap.addAttribute("addElement", "Topics");
+        modelMap.addAttribute("addElement", "Add Topic");
         modelMap.addAttribute("linkText", "See Content");
         modelMap.addAttribute("isTopic", "true");
         modelMap.addAttribute("isContent", "false");
@@ -47,7 +47,7 @@ public class TopicController {
     @GetMapping("/showTopicAddForm")
     public ModelAndView showAddForm(@RequestParam("id") Integer id, ModelMap modelMap) {
         modelMap.addAttribute("headline", "Add Topic");
-        modelMap.addAttribute("addElement", "Topic");
+        modelMap.addAttribute("addElement", "Add Topic");
         modelMap.addAttribute("title", "Add Topic");
         modelMap.addAttribute("action", "addTopic?categoryId=" + id);
         modelMap.addAttribute("name", "");
@@ -59,9 +59,9 @@ public class TopicController {
     public ModelAndView showEditTopicForm(@RequestParam("id") Integer id, ModelMap modelMap) {
         final Topic topic = topicRepository.findById(id).get();
 
-        modelMap.addAttribute("headline", "Add Topic");
-        modelMap.addAttribute("addElement", "Topic");
-        modelMap.addAttribute("title", "Add Topic");
+        modelMap.addAttribute("headline", "Edit Topic");
+        modelMap.addAttribute("addElement", "Edit Topic");
+        modelMap.addAttribute("title", "Edit Topic");
         modelMap.addAttribute("action", "editTopic?id=" + id);
         modelMap.addAttribute("name", topic.getName());
         modelMap.addAttribute("image", topic.getFileName());

@@ -44,7 +44,7 @@
           <c:if test="${isContent}">
             <c:set var="href" value="showPdfAddForm?id=${id}"/>
           </c:if>
-          <a href="${href}" class="btn btn-primary">Add new ${addElement}</a>
+          <a href="${href}" class="btn btn-primary">${addElement}</a>
         </div>
       </div>
   </body>

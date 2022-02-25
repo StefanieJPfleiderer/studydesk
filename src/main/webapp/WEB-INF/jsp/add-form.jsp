@@ -21,7 +21,7 @@
         </div>
         <br />
         <div class="form-group">
-          <input class="btn btn-primary" type="submit" value="Add ${addElement}"/>
+          <input class="btn btn-primary" type="submit" value="${addElement}"/>
         </div>
     </form:form>
   </body>

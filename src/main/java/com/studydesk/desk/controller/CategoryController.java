@@ -26,7 +26,7 @@ public class CategoryController {
     public ModelAndView getHome(@PathVariable(required = false) Integer elementId, ModelMap modelMap) {
         modelMap.addAttribute("linkText", "See Topics");
         modelMap.addAttribute("headline", "Categories");
-        modelMap.addAttribute("addElement", "Category");
+        modelMap.addAttribute("addElement", "Add Category");
         modelMap.addAttribute("isTopic", "false");
         modelMap.addAttribute("isContent", "false");
         modelMap.addAttribute("id", "");
@@ -39,7 +39,7 @@ public class CategoryController {
     @GetMapping("/showCategoryAddForm")
     public ModelAndView showAddForm(ModelMap modelMap) {
         modelMap.addAttribute("headline", "Add Category");
-        modelMap.addAttribute("addElement", "Category");
+        modelMap.addAttribute("addElement", "Add Category");
         modelMap.addAttribute("title", "Add Category");
         modelMap.addAttribute("action", "addCategory");
         modelMap.addAttribute("title", "");
@@ -52,8 +52,8 @@ public class CategoryController {
         final Category category = categoryRepository.findById(id).get();
 
         modelMap.addAttribute("headline", "Add Category");
-        modelMap.addAttribute("addElement", "Category");
-        modelMap.addAttribute("title", "Add Category");
+        modelMap.addAttribute("addElement", "Edit Category");
+        modelMap.addAttribute("title", "Edit Category");
         modelMap.addAttribute("action", "editCategory?id=" + id);
         modelMap.addAttribute("name", category.getName());
         modelMap.addAttribute("image", category.getFileName());
