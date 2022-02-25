@@ -20,9 +20,12 @@
           <c:set var="contentLink" value="content?id=${element.id}"/>
           <c:set var="topicDeleteLink" value="deleteTopic?id=${element.id}" />
           <c:set var="categoryDeleteLink" value="deleteCategory?id=${element.id}" />
+          <c:set var="topicEditLink" value="showEditTopicForm?id=${element.id}" />
+          <c:set var="categoryEditLink" value="showEditCategoryForm?id=${element.id}" />
           <a href="${isTopic ? contentLink : topicLink}" class="btn btn-primary">${linkText}</a>
           <a href="${isTopic ? topicDeleteLink : categoryDeleteLink }" class="btn btn-primary"
             onclick="return confirm('Are you sure you want to delete \'${element.name}\' and all its content?')">Delete</a>
+          <a href="${isTopic ? topicEditLink : categoryEditLink }" class="btn btn-primary">Edit</a>
         </div>
       </div>
     </c:forEach>

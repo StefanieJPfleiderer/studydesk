@@ -13,10 +13,10 @@
     <form:form method="post" enctype="multipart/form-data" modelAttribute="element" action="${action}">
         <div class="form-group">
           <form:label path="name">Name</form:label>
-          <form:input class="form-control col-xs-4" type="text" path="name"/>
+          <form:input class="form-control col-xs-4" type="text" path="name" value="${name}"/>
         </div>
         <div class="form-group custom-file">
-          <form:label id="file-label" class="custom-file-label" path="image">Image</form:label>
+          <form:label id="file-label" class="custom-file-label" path="image" value="${image}">${image eq "" ? "Image" : image}</form:label>
           <form:input id="file-upload" class="custom-file-input col-xs-4" type="file" name="image" path="image"/>
         </div>
         <br />

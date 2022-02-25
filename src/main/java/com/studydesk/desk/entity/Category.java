@@ -23,6 +23,9 @@ public class Category implements Comparable<Category> {
     @NonNull
     private byte[] image;
 
+    @NonNull
+    private String fileName;
+
     @Transient
     private String base64String;
 

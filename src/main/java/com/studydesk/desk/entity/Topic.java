@@ -23,6 +23,8 @@ public class Topic {
 
     private byte[] image;
 
+    private String fileName;
+
     @Transient
     private String base64String;
 

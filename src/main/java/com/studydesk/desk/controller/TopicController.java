@@ -50,7 +50,40 @@ public class TopicController {
         modelMap.addAttribute("addElement", "Topic");
         modelMap.addAttribute("title", "Add Topic");
         modelMap.addAttribute("action", "addTopic?categoryId=" + id);
+        modelMap.addAttribute("name", "");
+        modelMap.addAttribute("image", "");
         return new ModelAndView("add-form", "element", new Topic());
+    }
+
+    @GetMapping("/showEditTopicForm")
+    public ModelAndView showEditTopicForm(@RequestParam("id") Integer id, ModelMap modelMap) {
+        final Topic topic = topicRepository.findById(id).get();
+
+        modelMap.addAttribute("headline", "Add Topic");
+        modelMap.addAttribute("addElement", "Topic");
+        modelMap.addAttribute("title", "Add Topic");
+        modelMap.addAttribute("action", "editTopic?id=" + id);
+        modelMap.addAttribute("name", topic.getName());
+        modelMap.addAttribute("image", topic.getFileName());
+        return new ModelAndView("add-form", "element", topic);
+    }
+
+    @PostMapping("/editTopic")
+    public ModelAndView editTopic(@RequestParam("id") Integer id,
+                                  @RequestParam("image") MultipartFile file,
+                                  @ModelAttribute("element") Topic topic, BindingResult result) {
+        Topic topicToUpdate = topicRepository.findById(id).get();
+
+        try {
+            topicToUpdate.setId(id);
+            topicToUpdate.setImage(file.getBytes());
+            topicToUpdate.setName(topic.getName());
+            topicToUpdate.setFileName(file.getOriginalFilename());
+            topicRepository.save(topicToUpdate);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+        return new ModelAndView("redirect:/topics?id=" + topicToUpdate.getCategory().getId());
     }
 
     @PostMapping("/addTopic")
@@ -60,6 +93,7 @@ public class TopicController {
         try {
             topic.setImage(file.getBytes());
             topic.setCategory(categoryRepository.getById(categoryId));
+            topic.setFileName(file.getOriginalFilename());
             topicRepository.saveAndFlush(topic);
         } catch (IOException ioe) {
             ioe.printStackTrace();
