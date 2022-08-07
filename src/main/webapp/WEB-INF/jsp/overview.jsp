@@ -10,6 +10,9 @@
     <script src="/js/bootstrap.min.js" ></script>
   </head>
   <body>
+    <jsp:include page="breadcrumb.jsp">
+      <jsp:param name="navItems" value="${navItems}" />
+    </jsp:include>
     <h1 class="display-3">${headline}</h1>
     <c:forEach items="${list}" var="element">
       <div class="card" style="width: 18rem;">

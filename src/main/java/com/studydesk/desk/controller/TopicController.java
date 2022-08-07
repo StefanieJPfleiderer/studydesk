@@ -5,6 +5,7 @@ import com.studydesk.desk.entity.Topic;
 import com.studydesk.desk.persistence.CategoryRepository;
 import com.studydesk.desk.persistence.TopicRepository;
 import com.studydesk.desk.service.ImageService;
+import com.studydesk.desk.util.NavItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -32,6 +33,10 @@ public class TopicController {
         Category category = categoryRepository.findById(id).get();
         ArrayList<Topic> topics = new ArrayList<>(category.getTopics());
 
+        ArrayList<NavItem> navItems = new ArrayList<>();
+        navItems.add(new NavItem("/", "Categories"));
+        navItems.add(new NavItem("/topics", "Topics"));
+
         modelMap.addAttribute("headline", "Topics");
         modelMap.addAttribute("addElement", "Add Topic");
         modelMap.addAttribute("linkText", "See Content");
@@ -41,6 +46,7 @@ public class TopicController {
 
         ArrayList<Topic> topicsWithImage = imageService.getBase64String(topics);
         modelMap.addAttribute("list", topicsWithImage);
+        modelMap.addAttribute("navItems", navItems);
         return new ModelAndView("overview");
     }
 

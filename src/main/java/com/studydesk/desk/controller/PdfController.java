@@ -4,14 +4,13 @@ import com.studydesk.desk.entity.Pdf;
 import com.studydesk.desk.entity.Topic;
 import com.studydesk.desk.persistence.PdfRepository;
 import com.studydesk.desk.persistence.TopicRepository;
+import com.studydesk.desk.util.NavItem;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,9 +28,14 @@ public class PdfController {
     public ModelAndView getHome(@RequestParam(value = "id") Integer id, ModelMap modelMap) {
         Topic topic = topicRepository.getById(id);
         ArrayList<Pdf> pdfs = new ArrayList<>(topic.getPdfs());
+        ArrayList<NavItem> navItems = new ArrayList<>();
+        navItems.add(new NavItem("/", "Categories"));
+        navItems.add(new NavItem("/topics?id=" + topic.getCategory().getId(), "Topics"));
+        navItems.add(new NavItem("/content?id=" + id, "PDFs"));
 
         modelMap.addAttribute("list", pdfs);
         modelMap.addAttribute("id", id);
+        modelMap.addAttribute("navItems", navItems);
         return new ModelAndView("content-overview");
     }
 

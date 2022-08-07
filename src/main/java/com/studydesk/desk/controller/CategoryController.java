@@ -3,6 +3,7 @@ package com.studydesk.desk.controller;
 import com.studydesk.desk.entity.Category;
 import com.studydesk.desk.persistence.CategoryRepository;
 import com.studydesk.desk.service.ImageService;
+import com.studydesk.desk.util.NavItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -24,6 +25,9 @@ public class CategoryController {
 
     @GetMapping("/")
     public ModelAndView getHome(@PathVariable(required = false) Integer elementId, ModelMap modelMap) {
+        ArrayList<NavItem> navItems = new ArrayList<>();
+        navItems.add(new NavItem("/", "Categories"));
+
         modelMap.addAttribute("linkText", "See Topics");
         modelMap.addAttribute("headline", "Categories");
         modelMap.addAttribute("addElement", "Add Category");
@@ -33,6 +37,7 @@ public class CategoryController {
         ArrayList<Category> categories = imageService
                 .getBase64String((ArrayList<Category>) categoryRepository.findAll());
         modelMap.addAttribute("list", categories);
+        modelMap.addAttribute("navItems", navItems);
         return new ModelAndView("overview");
     }
 
